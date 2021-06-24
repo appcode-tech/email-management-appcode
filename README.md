@@ -1,0 +1,1 @@
+Code repository for email management re-usable app
