@@ -25,5 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),    
     
     # Contains various email methods for tests
-    path('email/tests', views.SendEmailTests)
+    path('email/tests', SendEmailTests)
 ]
