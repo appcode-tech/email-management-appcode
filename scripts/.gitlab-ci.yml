@@ -44,11 +44,12 @@ varibute:
   stage: deploy
   needs: ["build"]
   script:
-    # TODO: accept project id variables and loop below list
-
     # Deploy to varibute
-    # - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload --verbose --repository-url ${CI_API_V4_URL}/projects/23360376/packages/pypi dist/*
-    # Deploy to freshcart
-    # - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload --verbose --repository-url ${CI_API_V4_URL}/projects/25847786/packages/pypi dist/*
+    - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload --repository-url ${CI_API_V4_URL}/projects/23360376/packages/pypi dist/*
 
-    - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload --verbose --repository-url ${CI_API_V4_URL}/projects/23360376/packages/pypi dist/* --repository-url ${CI_API_V4_URL}/projects/25847786/packages/pypi dist/*
+freshcart:
+  stage: deploy
+  needs: ["build"]
+  script:
+    # Deploy to freshcart
+    - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload --repository-url ${CI_API_V4_URL}/projects/25847786/packages/pypi dist/*
