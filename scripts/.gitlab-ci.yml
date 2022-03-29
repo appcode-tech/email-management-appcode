@@ -53,3 +53,10 @@ freshcart:
   script:
     # Deploy to freshcart
     - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload --repository-url ${CI_API_V4_URL}/projects/25847786/packages/pypi dist/*
+
+captureatrip:
+  stage: deploy
+  needs: ["build"]
+  script:
+    # Deploy to captureatrip
+    - TWINE_PASSWORD=${CI_JOB_TOKEN} TWINE_USERNAME=gitlab-ci-token python -m twine upload --repository-url ${CI_API_V4_URL}/projects/34884265/packages/pypi dist/*
